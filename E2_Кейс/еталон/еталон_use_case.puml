@@ -1,0 +1,61 @@
+@startuml
+skinparam dpi 220
+left to right direction
+skinparam defaultFontName DejaVu Sans
+skinparam shadowing false
+skinparam usecaseFontSize 12
+skinparam actorFontSize 12
+skinparam nodesep 8
+skinparam ranksep 40
+actor "Гарант освітньої програми" as A2
+actor "Працівник навчального відділу" as A3
+actor "Студент" as A1
+actor "Декан" as A5
+actor "Працівник деканату" as A4
+actor "Система складання розкладу" as A9 <<система>>
+actor "Викладач" as A6
+actor "База контингенту" as A8 <<система>>
+actor "Адміністратор системи" as A7
+rectangle "Підсистема вибору вибіркових дисциплін" {
+  usecase "Сформувати каталог дисциплін" as UC01
+  usecase "Архівувати та копіювати каталог" as UC02
+  usecase "Опублікувати каталог" as UC21
+  usecase "Погодити каталог" as UC03
+  usecase "Переглянути доступні дисципліни" as UC05
+  usecase "Зробити або змінити вибір дисциплін" as UC06
+  usecase "Зробити повторний вибір" as UC10
+  usecase "Перевірити норму кредитів" as UC07
+  usecase "Підписати індивідуальний план" as UC14
+  usecase "Затвердити індивідуальний план" as UC15
+  usecase "Встановити період вибору" as UC08
+  usecase "Підбити підсумки вибору" as UC09
+  usecase "Переглянути статистику вибору" as UC11
+  usecase "Надіслати нагадування" as UC12
+  usecase "Сформувати індивідуальний план" as UC13
+  usecase "Експортувати результати вибору" as UC18
+  usecase "Переглянути списки груп" as UC16
+  usecase "Імпортувати дані контингенту" as UC17
+  usecase "Керувати ролями користувачів" as UC19
+  usecase "Налаштувати норми кредитів" as UC20
+}
+A2 -- UC01
+A2 -- UC02
+A2 -- UC21
+A3 -- UC03
+A1 -- UC05
+A1 -- UC06
+A1 -- UC10
+A1 -- UC14
+A5 -- UC15
+A4 -- UC08
+A4 -- UC11
+A4 -- UC13
+A4 -- UC18
+A9 -- UC18
+A6 -- UC16
+A8 -- UC17
+A7 -- UC19
+A7 -- UC20
+UC06 ..> UC07 : <<include>>
+UC10 ..> UC07 : <<include>>
+@enduml
